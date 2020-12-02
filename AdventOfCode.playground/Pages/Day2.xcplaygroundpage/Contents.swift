@@ -2,18 +2,18 @@
 
 import Foundation
 
+struct Password {
+    let range: ClosedRange<Int>
+    let character: Character
+    let password: String
+}
+
 let files = FileHandler.getInputs()
 let path = files[0]
 let inputString = try String(contentsOfFile: path)
 let inputRows = inputString.split(separator: "\n")
 let input = inputRows.map {
     $0.split(separator: " ")
-}
-
-struct Password {
-    let range: ClosedRange<Int>
-    let character: Character
-    let password: String
 }
 
 let passwords = input.map { (inputRow) -> Password in
