@@ -28,7 +28,14 @@ let passwords = input.map { (inputRow) -> Password in
 }
 
 let validPasswords1 = passwords.filter(passwordValidityPart1)
+let start1 = Date()
+let validPasswords2_2 = passwords.filter(passwordValidityPart2_2)
+print(Date().timeIntervalSince(start1))
+let start2 = Date()
 let validPasswords2 = passwords.filter(passwordValidityPart2)
+print(Date().timeIntervalSince(start2))
+
+
 print(validPasswords1.count)
 print(validPasswords2.count)
 
@@ -42,11 +49,26 @@ func passwordValidityPart1(password: Password) -> Bool {
 }
 
 func passwordValidityPart2(password: Password) -> Bool {
+    
     let character = password.character
     let lowerBound = password.range.lowerBound - 1
     let upperBound = password.range.upperBound - 1
     let passwordString = password.password
-    return (passwordString[lowerBound] == character) != (passwordString[upperBound] == character)
+    let result = (passwordString[lowerBound] == character) != (passwordString[upperBound] == character)
+    
+    return result
+}
+
+
+func passwordValidityPart2_2(password: Password) -> Bool {
+    
+    let character = password.character
+    let lowerBound = password.range.lowerBound - 1
+    let upperBound = password.range.upperBound - 1
+    let passwordCharacters = Array(password.password)
+    let result = (passwordCharacters[lowerBound] == character) != (passwordCharacters[upperBound] == character)
+    
+    return result
 }
 
 //: [Next](@next)
