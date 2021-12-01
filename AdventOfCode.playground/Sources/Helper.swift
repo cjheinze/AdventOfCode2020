@@ -13,3 +13,11 @@ public extension StringProtocol {
         self[index(startIndex, offsetBy: offset)]
     }
 }
+
+public extension Int {
+    func mod(_ other: Int) -> Int {
+        guard other != 0 else { return 0 }
+        let m = self % other
+        return m < 0 ? m + other : m
+    }
+}
